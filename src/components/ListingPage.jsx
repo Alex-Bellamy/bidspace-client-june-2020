@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Grid, Item, Label } from "semantic-ui-react";
+import { Grid, Item, Label, Button, Icon } from "semantic-ui-react";
 
-const ListingPage = () => {
+const ListingPage = (props) => {
   const [listings, setListings] = useState([]);
+  const [singleListing, setSingleListing] = useState(null)
 
   useEffect(() => {
     getListings();
   }, []);
+
+  useEffect(() => {
+    setSingleListing(null);
+    getListings();
+  })
 
   const getListings = async () => {
     let response = await axios.get(`/listings`);
@@ -22,11 +28,21 @@ const ListingPage = () => {
           <Item.Meta id="category">{listing.category}</Item.Meta>
           <Item.Extra>
             <Label data-cy="scene">{listing.scene}</Label>
+            <Button primary floated='right' onClick={props.getSingleListing}>
+            Bid on space
+            <Icon name='right chevron' />
+          </Button>
           </Item.Extra>
         </Item.Content>
       </Item>
     </Item.Group>
   ));
+
+  const getSingleListing = async (event) => {
+    let id = event.target.parentElement.dataset.id;
+    let response = await axios.get(`/listings/${id}`);
+    setSingleListing(response.data.listing);
+  };
 
   return (
     <>
