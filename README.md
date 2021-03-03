@@ -3,7 +3,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1cc7a97d-fe63-4123-8e62-c95e5d285cfd/deploy-status)](https://app.netlify.com/sites/bidspace/deploys)
 
 ## The challenge
-Using newly acquired skills to work independently, plan and execute complex web app with my fellow students. 
+Using newly acquired skills to work independently, plan and execute a complex web app with my fellow students. 
 
 After brainstorming we decided to go with an app where landlords can list their parking space and people can bid on it - 'Airbnb' of the parking space world. Built in React with a corresponding API (also in my repos).
 
